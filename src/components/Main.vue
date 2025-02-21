@@ -13,11 +13,7 @@ export default {
         }
     },
     methods: {
-        getFlag(flag){
-            if (flag) {
-                card.original_language
-            }
-        }
+
     }
 }
 </script>
@@ -26,7 +22,15 @@ export default {
     <span class="fi fi-ja"></span> 
   <div class="container">
     <div class="card-container d-flex row">
-     <CardVue v-for="card in store.filmsTrending" :key="card.id"
+     <CardVue v-for="card in store.tv" :key="card.id"
+     :img = "card.poster_path"
+     :title = "card.original_title || card.name"
+     :lenguage = "card.original_language"
+     :resume = card.overview
+     :vote = card.vote_average
+     /> 
+    <h1>movie</h1>
+     <CardVue v-for="card in store.movie" :key="card.id"
      :img = "card.poster_path"
      :title = "card.original_title || card.name"
      :lenguage = "card.original_language"

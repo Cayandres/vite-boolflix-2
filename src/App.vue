@@ -23,16 +23,16 @@ export default {
         }
     },
     methods: {
-        getApi(){
-            axios.get(store.apiUrl, {
+        getApi(type){
+            axios.get(store.apiUrl + type, {
                 params: {
                     api_key: store.key,
                     query: store.searchedInput
                 }
             })
             .then(result => {
-                store.filmsTrending = result.data.results
-                console.log(store.filmsTrending);
+                store[type] = result.data.results
+                console.log(store[type]);
                 
             })
         },
@@ -43,7 +43,8 @@ export default {
         }
     },
     mounted() {
-        this.getApi()
+        this.getApi('tv')
+        this.getApi('movie')
         console.log(store.searchedInput);
         
     }
@@ -51,7 +52,7 @@ export default {
 </script>
 
 <template>
-    <Header @searched ="getApi"/>
+    <Header @searched ="getApi('tv') , getApi('movie')"/>
     <Main />
 </template>
 
