@@ -37,10 +37,6 @@ export default {
             })
         },
 
-        ciao(){
-            console.log('mi hai cliccato');
-            
-        }
     },
     mounted() {
         this.getApi('tv')
